@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Stats</title>
+</head>
+<body>
+    <h1>Ratings and Comments</h1>
+    <h2>Average Rating:</h2>
+    {% if avgRating and ratings %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Flight #</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ ratings[0]['flight_num'] }}</td>
+                    <td>{{ avgRating }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <p>No rating history.</p>
+    {% endif %}
+    
+    <h2>View all Ratings:</h2>
+    {% if ratings %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Rating</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rating in ratings %}
+                <tr>
+                    <td>{{ rating['email'] }}</td>
+                    <td>{{ rating['rating'] }}</td>
+                    <td>{{ rating['comment'] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No rating history.</p>
+    {% endif %}
+
+    <a href="/dashboard">Go back</a>
+
+</body>
+</html>

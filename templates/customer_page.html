@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Customer Page</title>
+	<link rel="stylesheet" href="/static/page.css">
+</head>
+<body>
+	<a href="/">Go back</a>
+	
+	<h1>Sign In</h1>
+	<form action="/customerloginAuth" method="POST">
+		<div class="form-group">
+		<label for="email">Email Address:</label>
+		<input type="text" name="email" placeholder="email" required/><br>
+		<label for="password">Password:</label>
+		<input type="text" name="password" placeholder="password" required/><br>
+		</div>
+		<input type="submit" value = "Sign In" />
+		{% if error %}
+			<p class="error"><strong>Error:</strong> {{error}}</p>
+		{% endif %}
+	</form>
+
+	<h1>Register</h1>
+	<form action="/customerAuth" method="POST">
+		<div class="form-group">
+		<label for="email">Email Address:</label>
+		<input type="text" name="email" placeholder="email" required/><br>
+
+		<label for="password">Password:</label>
+		<input type="text" name="password" placeholder="password" required/><br>
+
+		<label for="f_name">First Name:</label>
+		<input type="text" name="f_name" placeholder="firstname" required/><br>
+
+		<label for="l_name">Last Name:</label>
+		<input type="text" name="l_name" placeholder="lastname" required/><br>
+
+		<label for="building">Building:</label>
+		<input type="text" name="building" placeholder="building" required/><br>
+
+		<label for="street">Street:</label>
+		<input type="text" name="street" placeholder="street" required/><br>
+
+		<label for="apartment">Apartment:</label>
+		<input type="text" name="apartment" placeholder="aptrtment" required/><br>
+
+		<label for="city">City:</label>
+		<input type="text" name="city" placeholder="city" required/><br>
+
+		<label for="state">State:</label>
+		<input type="text" name="state" placeholder="state" required/><br>
+
+		<label for="zipcode">Zipcode:</label>
+		<input type="text" name="zipcode" placeholder="zipcode" required/><br>
+
+		<label for="passport number">Passport Number:</label>
+		<input type="text" name="passport number" placeholder="passport number" required/><br>
+
+		<label for="expiration date">Passport Expiration:</label>
+		<input type="date" name="expiration date" required/><br>
+
+		<label for="passport country">Passport Country:</label>
+		<input type="text" name="passport country" placeholder="passport country" required/><br>
+
+		<label for="DOB">DOB:</label>
+		<input type="date" name="DOB" required/><br>
+		</div>
+		<input type="submit" value="Register" />
+	</form>
+
+	{% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+
+</body>
+</html>

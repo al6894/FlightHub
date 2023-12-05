@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rates</title>
+</head>
+<body>
+    <a href="/">Go back</a>
+
+    <h1>Rate Your Flight</h1>
+    
+    <form action="/rates" method="POST">
+        <h3>Rate:</h3>
+        <input type="text" name="rating" placeholder="0" required/><br>
+        <h3>Comment:</h3>
+        <input type="text" name="comment" placeholder="Enter you review here" required/><br><br>
+        <input type="submit" value="Rate"/>
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 200px;
+    text-align: center;
+    color: rgb(20, 77, 20);
+}
+
+body {
+    text-align: center;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+    width: 50%; /* Adjust as needed */
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #eee; /* Add a background color for better visibility */
+    height: 50px; /* Adjust the height as needed */
+}
+
+nav a {
+    text-decoration: none;
+    color: #333; /* Adjust the color as needed */
+    font-weight: bold;
+    padding: 10px;
+    margin: 0;
+    transition: color 0.3s ease; /* Add a smooth color transition */
+}
+
+nav a:hover {
+    color: #007bff; /* Change color on hover, adjust as needed */
+}
+
+
+.purchase-button {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.purchase-button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid #4CAF50;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 150px; /* Adjust as needed */
+    font-weight: bold;
+}

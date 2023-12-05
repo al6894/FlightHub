@@ -1,0 +1,107 @@
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 150px; /* Adjust as needed */
+    font-weight: bold;
+}
+
+input {
+    width: 200px; /* Adjust as needed */
+}
+
+.purchase-button {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.purchase-button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid #4CAF50;
+}
+
+.submit-button {
+    cursor: pointer;
+    background-color: rgb(24, 186, 250);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.submit-button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid rgb(24, 186, 250);
+}
+
+.back-btn {
+    background-color: #2e912e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.menu-btn {
+    background-color: #3578dc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.logout {
+    padding: 10px;
+    text-align: right;
+}
+
+.airline {
+    font-size: 100px;
+    text-align: center;
+}
+
+nav {
+    text-align: center;
+}
+
+nav a {
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 20px auto;
+}

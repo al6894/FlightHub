@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buy Tickets</title>
+</head>
+<body>
+    <a href="/">Go back</a>
+
+    <h1>Purchase Ticket</h1>
+
+    <form action="/buy-tickets" method="POST">
+        <label for="email">Email:</label>
+        <input type="text" name="email" placeholder="johndoe@gmail.com" required/><br>
+        <label for="f_name">First Name:</label>
+        <input type="text" name="f_name" placeholder="First Name" required/><br>
+        <label for="l_name">Last Name:</label>
+        <input type="text" name="l_name" placeholder="Last Name" required/><br>
+        <label for="DOB">DOB:</label>
+        <input type="date" name="DOB" placeholder="YYYY/MM/DD" required/><br>
+        <label for="card_type">Card Type:</label>
+        <input type="text" name="card_type" placeholder="VISA/Mastercard" required/><br>
+        <label for="card_num">Card Number:</label>
+        <input type="text" name="card_num" placeholder="Card Number" required/><br>
+        <label for="card_name">Name on Card:</label>
+        <input type="text" name="card_name" placeholder="Name on Card" required/><br>
+        <label for="exp_date">Expiration Date:</label>
+        <input type="date" name="exp_date" placeholder="YYYY/MM/DD" required/><br><br>
+        <input type="submit" value="Purchase"/>
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+    </form>
+
+    {% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+
+</body>
+</html>

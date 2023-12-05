@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff Page</title>
+    <link rel="stylesheet" href="/static/page.css">
+</head>
+<body>
+    <a href="/">Go back</a>
+    
+    <h1>Sign In</h1>
+	<form action="/staffloginAuth" method="POST">
+        <div class="form-group">
+        <label for="airline_name">Airline:</label>
+        <input type="text" name = "airline_name" placeholder="airline_name" required/><br>
+        <label for="username">Username:</label>
+		<input type="text" name = "username" placeholder="username" required/><br>
+        <label for="password">Password:</label>
+		<input type="text" name = "password" placeholder="password" required/><br>
+        </div>
+		<input type="submit" value = "Sign In" />
+		{% if error %}
+			<p class="error"><strong>Error:</strong> {{error}}</p>
+		{% endif %}
+	</form>
+
+    <h1>Register</h1>
+    <form action="/staffAuth" method="POST">
+        <div class="form-group">
+        <label for="airline_name">Airline:</label>
+        <input type="text" name="airline_name" placeholder="airline name" required/><br>
+        <label for="username">Username:</label>
+        <input type="text" name="username" placeholder="username" required/><br>
+        <label for="f_name">First Name:</label>
+        <input type="text" name="f_name" placeholder="firstname" required/><br>
+        <label for="l_name">Last Name:</label>
+        <input type="text" name="l_name" placeholder="lastname" required/><br>
+        <label for="password">Password:</label>
+        <input type="text" name="password" placeholder="password" required/><br>
+        <label for="DOB">DOB:</label>
+        <input type="date" name="DOB" placeholder="MM/DD/YYYY" required/><br>
+        </div>
+        <input type="submit" value="Register"/>
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+    </form>
+
+</body>
+</html>

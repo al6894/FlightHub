@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff Dashboard</title>
+    <link rel="stylesheet" href="/static/staffdashboard.css">
+</head>
+<body>
+    <h1 class="airline"> {{flights[0]['airline_name'] }} </h1>
+    <nav>
+        <a class="back-btn" href="/">Go back</a>
+        <a class="menu-btn" href="/freqCustomers">Customer Records</a>
+        <a class="menu-btn" href="/flightManifest">Passenger Lists</a>
+        <a class="menu-btn" href="/viewFleet">Fleet</a>
+        <a class="logout-btn" href="/logout">Logout</a>
+    </nav>
+
+    <h2>Month Preview:</h2>
+    {% if flights %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Flight Number</th>
+                    <th>Departure Date</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Date</th>
+                    <th>Arrival Time</th>
+                    <th>Base Price</th>
+                    <th>Departure Airport</th>
+                    <th>Arrival Airport</th>
+                    <th>Airplane Airline</th>
+                    <th>Airplane ID</th>
+                    <th>Status</th>
+                    <th>Stats</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flight in flights %}
+                <tr>
+                    <td>{{ flight['flight_num'] }}</td>
+                    <td>{{ flight['departure_date'] }}</td>
+                    <td>{{ flight['departure_time'] }}</td>
+                    <td>{{ flight['arrival_date'] }}</td>
+                    <td>{{ flight['arrival_time'] }}</td>
+                    <td>{{ flight['base_price'] }}</td>
+                    <td>{{ flight['departure_airport'] }}</td>
+                    <td>{{ flight['arrival_airport'] }}</td>
+                    <td>{{ flight['airplane_airline'] }}</td>
+                    <td>{{ flight['airplane_id'] }}</td>
+                    <td>{{ flight['status'] }}</td>
+                    <td>
+                        <form action="/viewStats?flight_num={{ flight['flight_num'] }}&departure_date={{ flight['departure_date'] }}" method = "post">
+                            <input type="hidden" name="flight_num" value="{{ flight['flight_num'] }}">
+                            <input type="hidden" name="departure_date" value="{{ flight['departure_date'] }}">
+                            <input type="submit" class="purchase-button" value="View">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No flight history.</p>
+    {% endif %}
+
+    <h2>Last Year Revenue:</h2>
+    {% if yearRevenue %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Last Year's Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>${{ yearRevenue['revenue'] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <p>No revenue generated.</p>
+    {% endif %}
+
+    <h2>Lasy Month Revenue:</h2>
+    {% if monthRevenue %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Last Month's Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>${{ monthRevenue['revenue'] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <p>No revenue generated.</p>
+    {% endif %}
+    
+    <h2>Create Flight</h2>
+    <form action="/createFlight" method="POST">
+        <div class="form-group">
+            <label for="flight_num">Flight Number:</label>
+            <input type="text" name = "flight_num" placeholder="flight #" required/> 
+            <label for="base_price">Base Price:</label>
+            <input type="text" name = "base_price" placeholder="$0.00" required/>
+        </div>
+        <div class="form-group">
+            <label for="departure_date">Departure Date:</label>
+            <input type="date" name = "departure_date" required/>
+            <label for="departure_time">Departure Time:</label>
+            <input type="time" name = "departure_time" required/>
+        </div>
+        <div class="form-group">
+            <label for="arrival_date">Arrival Date:</label>
+            <input type="date" name = "arrival_date" required/>
+            <label for="arrival_time">Arrival Time:</label>
+            <input type="time" name = "arrival_time" required/>
+        </div>
+        <div class="form-group">
+            <label for="departure_airport">Departure Airport:</label>
+            <input type="text" name = "departure_airport" placeholder="departure airport" required/> 
+            <label for="arrival_airport">Arrival Airport:</label>
+            <input type="text" name = "arrival_airport" placeholder="arrival airport" required/>
+        </div>
+        <div class="form-group">
+            <label for="airplane_airline">Airplane Airline:</label>
+            <input type="text" name = "airplane_airline" placeholder="airline" required/> 
+            <label for="airplane_id">Airplane ID:</label>
+            <input type="text" name = "airplane_id" placeholder="ID" required/>
+        </div>
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <input type="text" name = "status" placeholder="status" required/>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="submit-button" value = "Create Flight" />
+        </div>
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+    </form>
+
+    <h2>Update Flight Status</h2>
+    <form action="/changeStatus" method="POST">
+        <div class="form-group">
+            <label for="flight_num">Flight Number:</label>
+            <input type="text" name = "flight_num" placeholder="flight #" required/>
+        </div>
+        <div class="form-group">
+            <label for="departure_date">Departure Date:</label>
+            <input type="date" name = "departure_date" required/>
+        </div>
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <input type="text" name = "status" placeholder="status" required/>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="submit-button" value = "Update Status" />
+        </div>
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+    </form>
+
+    <h2>Add Airplane</h2>
+    <form action="/addAirplane" method="POST">
+        <div class="form-group">
+            <label for="ID">Airplane ID:</label>
+            <input type="text" name="ID" placeholder="ID" required/>
+            <label for="num_seats">Seats:</label>
+            <input type="text" name="num_seats" placeholder="0" required/>
+        </div>
+        <div class="form-group">
+            <label for="manufacturer">Manufacturer:</label>
+            <input type="text" name="manufacturer" placeholder="manufacturer" required/>
+            <label for="model_num">Model Number:</label>
+            <input type="text" name="model_num" placeholder="model #" required/>
+        </div>
+        <div class="form-group">
+            <label for="manufactured_date">Manufactured Date:</label>
+            <input type="date" name="manufactured_date" placeholder="YYYY-MM-DD" required/>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="submit-button" value = "Add Airplane"/>
+        </div>
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+    </form>
+
+    <h2>Add Airport</h2>
+    <form action="/addAirport" method="POST">
+        <div class="form-group">
+            <label for="airport_code">Airport Code:</label>
+            <input type="text" name="airport_code" placeholder="Code" required/>
+            <label for="airport_name">Airport Name:</label>
+            <input type="text" name="airport_name" placeholder="Name" required/>
+        </div>
+        <div class="form-group">
+            <label for="airport_type">Airport Type:</label>
+            <input type="text" name="airport_type" placeholder="Type" required/>
+            <label for="city">City:</label>
+            <input type="text" name="city" placeholder="City" required/>
+        </div>
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <input type="text" name="country" placeholder="Country" required/>
+            <label for="num_terminals">Terminals:</label>
+            <input type="text" name="num_terminals" placeholder="0" required/>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="submit-button" value = "Add Airport"/>
+        </div>
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+    </form>
+
+    <h2>Schedule Maintenance</h2>
+    <form action="/maintenance" method="POST">
+        <div class="form-group">
+        <label for="airplane_id">Airplane ID:</label>
+        <input type="text" name="airplane_id" placeholder="airplane id" required/>
+        <label for="start_date">Start Date:</label>
+        <input type="date" name="start_date" placeholder="YYYY-MM-DD" required/>
+        </div>
+        <div class="form-group">
+        <label for="start_time">Start Time:</label>
+        <input type="time" name="start_time" placeholder="HH:mm" required/>
+        <label for="end_date">End Date:</label>
+        <input type="date" name="end_date" placeholder="YYYY-MM-DD" required/>
+        </div>
+        <div class="form-group">
+        <label for="end_time">End Time:</label>
+        <input type="time" name="end_time" placeholder="HH:mm" required/>
+        </div>
+        <div class="form-group">
+        <input type="submit" class="submit-button" value="Schedule"/>
+        </div>
+        
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+    </form>
+</body>
+</html>

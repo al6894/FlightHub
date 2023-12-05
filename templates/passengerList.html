@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Passenger List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <a href="/dashboard">Go back</a>
+    
+    <h2>Search for Customer History</h2>
+    <form action="/flightManifest" method = "post">
+        <input type="text" name="flight_num" placeholder="Flight #">
+        <input type="submit" class="button" value="Search">
+    </form>
+    {% if passengers %}
+        <p>Passengers on {{ passengers[0]['airline'] }} Flight {{ passengers[0]['flight_num'] }}:</p>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for passenger in passengers %}
+                <tr>
+                    <td>{{ passenger['email'] }}</td>
+                    <td>{{ passenger['f_name'] + " " + passenger['l_name'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    <br>
+
+    {% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+</body>
+</html>

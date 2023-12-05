@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Customer Search</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <a href="/dashboard">Go back</a>
+    
+    <h1>View Customers</h1>
+
+    <h2>Frequent Fliers</h2>
+    {% if customers %}
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Trips</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for customer in customers %}
+                    <tr>
+                        <td>{{ customer['email'] }}</td>
+                        <td>{{ customer['trips'] }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+    {% else %}
+        <p>No customer history.</p>
+    {% endif %}
+
+    <h2>Search for Customer History</h2>
+    <form action="/searchCustomer" method = "post">
+        <input type="text" id="email" name="email" placeholder="Customer Email">
+        <input type="submit" class="button" value="Search">
+    </form>
+    {% if flight_history %}
+        <p>Flight History for {{ flight_history[0]['email'] }}:</p>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Flight #</th>
+                    <th>Departure Date</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flight in flight_history %}
+                <tr>
+                    <td>{{ flight['flight_num'] }}</td>
+                    <td>{{ flight['departure_date'] }}</td>
+                    <td>{{ flight['calc_price'] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    <br>
+
+    {% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+</body>
+</html>

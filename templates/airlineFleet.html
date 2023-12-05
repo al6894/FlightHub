@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fleet</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <a href="/dashboard">Go back</a>
+    
+    <h2>Airline Fleet</h2>
+    {% if airplanes %}
+        <p>Airplanes in Service for {{ airplanes[0]['airline_name'] }}:</p>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Seats</th>
+                    <th>Manufacturer</th>
+                    <th>Model Number</th>
+                    <th>Manufactured Date</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for airplane in airplanes %}
+                <tr>
+                    <td>{{ airplane['ID'] }}</td>
+                    <td>{{ airplane['num_seats'] }}</td>
+                    <td>{{ airplane['manufacturer'] }}</td>
+                    <td>{{ airplane['model_num'] }}</td>
+                    <td>{{ airplane['manufactured_date'] }}</td>
+                    <td>{{ airplane['age'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    <br>
+    
+    {% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+</body>
+</html>

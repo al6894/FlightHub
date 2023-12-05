@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client Dashboard</title>
+</head>
+<body>
+    <h2>View Purchases:</h2>
+    <nav>
+        <a class="back-btn" href="/">Go back</a>
+        <a class="logout-btn" href="/logout">Logout</a>
+    </nav>
+    {% if purchases %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Ticket ID</th>
+                    <th>Flight Number</th>
+                    <th>Departure Date</th>
+                    <th>Name</th>
+                    <th>DOB</th>
+                    <th>Card Type</th>
+                    <th>Card Number</th>
+                    <th>Cardholder</th>
+                    <th>Purchase Date</th>
+                    <th>Purchase Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for purchase in purchases %}
+                <tr>
+                    <td>{{ purchase['ticket_id'] }}</td>
+                    <td>{{ purchase['flight_num'] }}</td>
+                    <td>{{ purchase['departure_date'] }}</td>
+                    <td>{{ purchase['f_name'] + " " + purchase['l_name'] }}</td>
+                    <td>{{ purchase['DOB'] }}</td>
+                    <td>{{ purchase['card_type'] }}</td>
+                    <td>{{ purchase['card_num'] }}</td>
+                    <td>{{ purchase['card_name'] }}</td>
+                    <td>{{ purchase['purchase_date'] }}</td>
+                    <td>{{ purchase['purchase_time'] }}</td>
+                    <td>
+                        <form action="/rates?airline_name={{ purchase['airline_name'] }}&flight_num={{ purchase['flight_num'] }}&departure_date={{ purchase['departure_date'] }}&airplane_id={{ purchase['airplane_id'] }}" method = "post">
+                            <input type="hidden" name="airline_name" value="{{ purchase['airline_name'] }}">
+                            <input type="hidden" name="flight_num" value="{{ purchase['flight_num'] }}">
+                            <input type="hidden" name="departure_date" value="{{ purchase['departure_date'] }}">
+                            <input type="hidden" name="airplane_id" value="{{ purchase['airplane_id'] }}">
+                            <label for="rating">Rate:</label>
+                            <input type="text" name="rating" placeholder="0" required/><br>
+                            <label for="comment">Comment:</label>
+                            <input type="text" name="comment" placeholder="Enter you review here" required/><br>
+                            <input type="submit" class="purchase-button" value="Rate">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/cancel" method = "post">
+                            <input type="hidden" name="ticket_id" value="{{ purchase['airplane_id'] }}">
+                            <input type="submit" class="purchase-button" value="Cancel">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No purchase history.</p>
+    {% endif %}
+    
+    <h2>Last Year Spendings: </h2>
+    {% if yearExpenses %}
+        <table border = "1">
+            <thead>
+                <tr>
+                    <th>Last Year's Spendings</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> ${{ yearExpenses['expenses'] }} </td>
+                </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <p>No purchase history</p>
+    {% endif %}
+
+    <h2>Last Month Spendings: </h2>
+    {% if monthExpenses %}
+        <table border = "1">
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for month in monthExpenses %}
+                <tr>
+                    <td>{{ month['purchase_month'] }}</td>
+                    <td>{{ month['monthly_total'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No purchase history</p>
+    {% endif %}
+
+
+    {% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+
+</body>
+</html>

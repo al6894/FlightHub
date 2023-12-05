@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+	<header>flightHub</header>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="#">About</a>
+
+        {% if is_signed_in %}
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/customer_page">Customer</a>
+            <a href="/staff_page">Staff</a>
+        {% endif %}
+    </nav>
+
+    <h1>Flight Search</h1>
+
+    <form method="post">
+        <div class="form-group">
+        <label for="start">Departure Date:</label>
+        <input type="date" id="departure_date" name="departure_date" required/>
+
+        <label for="end">Return Date:</label>
+        <input type="date" id="arrival_date" name="arrival_date"/><br>
+        </div>
+
+        <div class="form-group">
+        <label for="destination">From:</label>
+        <input type="text" id="departure_airport" name="departure_airport" required>
+
+        <label for="arrival">To:</label>
+        <input type="text" id="arrival_airport" name="arrival_airport" required>
+        </div>
+
+        <button type="submit">Search</button>
+    </form>
+
+    {% if flights %}
+        <h2>Search Results:</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Airline</th>
+                    <th>Flight #</th>
+                    <th>Departure Date</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Date</th>
+                    <th>Arrival Time</th>
+                    <th>Destination</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flight in flights %}
+                <tr>
+                    <td>{{ flight['airline_name'] }}</td>
+                    <td>{{ flight['flight_num'] }}</td>
+                    <td>{{ flight['departure_date'] }}</td>
+                    <td>{{ flight['departure_time'] }}</td>
+                    <td>{{ flight['arrival_date'] }}</td>
+                    <td>{{ flight['arrival_time'] }}</td>
+                    <td>{{ flight['departure_airport'] + " - " + flight['arrival_airport'] }}</td>
+                    <td>{{ flight['base_price'] }}</td>
+                    <td>{{ flight['status'] }}</td>
+                    <td>
+                        <form action="/buy-tickets" method = "post">
+                            <input type="hidden" name="airline_name" value="{{ flight['airline_name'] }}">
+                            <input type="hidden" name="flight_num" value="{{ flight['flight_num'] }}">
+                            <input type="hidden" name="departure_date" value="{{ flight['departure_date'] }}">
+                            <input type="hidden" name="airplane_id" value="{{ flight['airplane_id'] }}">
+                            <input type="submit" class="purchase-button" value="Purchase">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No flights found.</p>
+    {% endif %}
+</body>
+</html>

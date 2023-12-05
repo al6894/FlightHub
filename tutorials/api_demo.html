@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask HTML Demonstration</title>
+</head>
+<body>
+    <h1>Flask HTML Demonstration</h1>
+
+    <!-- Query Example -->
+    <h2>Date Range Selection</h2>
+    <form action="query-example" method="get">
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date" name="date1">
+        <br>
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" name="date2">
+        <br>
+        <button type="submit">Submit Date Range</button>
+    </form>
+
+    <!-- Form Example -->
+    <h2>Form Data Submission</h2>
+    <form action="form-example" method="post">
+        <label for="data1">Data 1:</label>
+        <input type="text" id="data1" name="data1" placeholder="Enter data 1">
+        <br>
+        <label for="data2">Data 2:</label>
+        <input type="text" id="data2" name="data2" placeholder="Enter data 2">
+        <br>
+        <button type="submit">Submit Form Data</button>
+    </form>
+
+    <!-- Login Example -->
+    <h2>Login Example</h2>
+    <form action="login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter username">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter password">
+        <br>
+        <button type="submit">Submit Login Data</button>
+    </form>
+
+    <!-- Protected Example -->
+    <h2>Protected Example</h2>
+    <p>
+        <a href="protected">View Protected Page</a>
+        <br>
+        <a href="protected2">View Protected Page 2</a>
+    </p>
+</body>
+</html>
