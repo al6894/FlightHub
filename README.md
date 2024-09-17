@@ -1,18 +1,18 @@
-#FlightHub Documentation
+# FlightHub Documentation
 
 This website is designed to facilitate the management and usage of an airline's services for
 both staff and customers. The platform offers tools for staff to manage flights, passengers,
 and revenue while giving customers the ability to search for flights, purchase tickets, and
 view their flight history.
 
-##Core Features Include:
+## Core Features Include:
 1. Flight search and booking
 2. Customer and staff registration
 3. Dashboards for managing flight and customer information
 4. Customer and staff profile management
 5. Flight statistics and feedback views
 
-##CSS Files
+## CSS Files
 1. index.css
 Purpose: Styles the index.html page.
 Context of Use: Applied to the homepage (index.html), ensuring visual consistency and layout.
@@ -25,7 +25,7 @@ Context of Use: Applied to both customer and staff login/register pages, providi
 Purpose: Styles the staffdashboard.html page.
 Context of Use: Used in the staff dashboard to ensure consistent layout and design for staff-specific features and tables.
 
-##HTML Files
+## HTML Files
 1. airlineFleet.html
 Purpose: Displays a table of all airplanes belonging to an airline.
 Context of Use: Accessed via the “Fleet” button on staffdashboard.html, showing the airline’s fleet.
@@ -74,7 +74,7 @@ Context of Use: Accessed from the staff dashboard to update staff member contact
 Purpose: Displays ratings and comments for flights, along with the average rating.
 Context of Use: Accessed through the “View” button on the staffdashboard.html page to see customer feedback on flights.
 
-##Use Cases
+## Use Cases
 Use Case 1: Search for Flights (One-way and Round-trip)
 ID: UC-001
 Actor(s): Customer
