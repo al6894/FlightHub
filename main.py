@@ -5,10 +5,11 @@ from dateutil.relativedelta import relativedelta
 import pymysql.cursors
 from decimal import Decimal
 import hashlib
+import secrets
 
 #Initialize the app from Flask
 app = Flask(__name__)
-app.secret_key = 'some key that you will never guess'
+app.secret_key = secrets.token_hex()
 
 #Configure MySQL
 conn = pymysql.connect(host='localhost',
