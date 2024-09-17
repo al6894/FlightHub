@@ -1,10 +1,10 @@
 #Import Flask Library
 from flask import Flask, render_template, request, session, url_for, redirect
+from bcrypt import hashpw, gensalt, checkpw
 from datetime import datetime, date, timedelta, time
 from dateutil.relativedelta import relativedelta
 import pymysql.cursors
 from decimal import Decimal
-import hashlib
 import secrets
 
 #Initialize the app from Flask
@@ -21,9 +21,8 @@ conn = pymysql.connect(host='localhost',
 
 #Hash password before storing into database
 def hash_password(password):
-    md5 = hashlib.md5()
-    md5.update(password.encode('utf-8'))
-    return md5.hexdigest()
+    hashed = hashpw(password, gensalt())
+    return hashed
 
 #Define a route to index
 @app.route('/', methods = ['GET', 'POST'])
