@@ -3,7 +3,8 @@ from flask import Flask, render_template, request, session, url_for, redirect
 from bcrypt import hashpw, gensalt, checkpw
 from datetime import datetime, date, timedelta, time
 from dateutil.relativedelta import relativedelta
-import pymysql.cursors
+import psycopg2
+from psycopg2.extras import RealDictCursor
 from decimal import Decimal
 import secrets
 
@@ -11,13 +12,17 @@ import secrets
 app = Flask(__name__)
 app.secret_key = secrets.token_hex()
 
-#Configure MySQL
-conn = pymysql.connect(host='localhost',
-                       user='root',
-                       password='',
-                       db='air_ticket_reservation',
-                       charset='utf8mb4',
-                       cursorclass=pymysql.cursors.DictCursor)
+#Configure PostGres SQL server
+conn = psycopg2.connect(
+    host='localhost',
+    user='your_postgres_user',
+    password='your_password',
+    dbname='air_ticket_reservation',
+    port=5432
+)
+
+# Using RealDictCursor for dictionary-like cursor behavior
+cur = conn.cursor(cursor_factory=RealDictCursor)
 
 #Hash password before storing into database
 def hash_password(password):
