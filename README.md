@@ -84,7 +84,7 @@ view their flight history.
    Purpose: Allows staff members to add email addresses and phone numbers to their account.  
    Context of Use: Accessed from the staff dashboard to update staff member contact information.
 
-12. viewstats.html
+12. viewstats.html  
     
    Purpose: Displays ratings and comments for flights, along with the average rating.  
    Context of Use: Accessed through the “View” button on the staffdashboard.html page to see customer feedback on flights.
