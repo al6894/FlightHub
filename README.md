@@ -74,12 +74,12 @@ view their flight history.
    Purpose: Staff dashboard providing tools to manage flights, passengers, airplanes, airports, maintenance schedules, and revenues.  
    Context of Use: Contains various forms and tables for flight and revenue management, including buttons that redirect to other pages (e.g., airlineFleet.html, passengerList.html, customerSearch.html, viewstats.html, and staffProfile.html).
 
-10. staff_page.html
+10. staff_page.html  
     
    Purpose: Provides login and registration forms for staff members.  
    Context of Use: Accessed by staff for logging in or registering for an account.
 
-11. staffProfile.html
+11. staffProfile.html  
     
    Purpose: Allows staff members to add email addresses and phone numbers to their account.  
    Context of Use: Accessed from the staff dashboard to update staff member contact information.
