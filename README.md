@@ -13,15 +13,15 @@ view their flight history.
 - Flight statistics and feedback views
 
 ## CSS Files
-1. index.css
+-1. index.css
 Purpose: Styles the index.html page.
 Context of Use: Applied to the homepage (index.html), ensuring visual consistency and layout.
 
-2. page.css
+-2. page.css
 Purpose: Styles the customer_page.html and staff_page.html pages.
 Context of Use: Applied to both customer and staff login/register pages, providing shared visual elements across user types.
 
-3. staffdashboard.css
+-3. staffdashboard.css
 Purpose: Styles the staffdashboard.html page.
 Context of Use: Used in the staff dashboard to ensure consistent layout and design for staff-specific features and tables.
 
