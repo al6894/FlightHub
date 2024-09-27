@@ -76,11 +76,16 @@ Context of Use: Accessed through the “View” button on the staffdashboard.htm
 
 ## Use Cases
 Use Case 1: Search for Flights (One-way and Round-trip)
+
 ID: UC-001
+
 Actor(s): Customer
+
 Description: A customer can search for future flights based on source city/airport name, destination city/airport name, and departure or return dates (for round-trip).
+
 Preconditions:
 The customer does not need to be logged in.
+
 Postconditions:
 Available flights are displayed based on the search criteria.
 Trigger:
