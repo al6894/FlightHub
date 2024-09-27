@@ -27,63 +27,79 @@ Context of Use: Used in the staff dashboard to ensure consistent layout and desi
 
 ## HTML Files
 1. airlineFleet.html
+   
 Purpose: Displays a table of all airplanes belonging to an airline.
 Context of Use: Accessed via the “Fleet” button on staffdashboard.html, showing the airline’s fleet.
 
-2. buyTicket.html
+3. buyTicket.html
+   
 Purpose: Provides a form for customers to complete their flight ticket purchase.
 Context of Use: Accessed through the index.html page after a customer searches for flights and clicks “Purchase.”
 
-3. clientdashboard.html
+5. clientdashboard.html
+   
 Purpose: Displays a table of purchases made by the customer, including options to cancel or rate flights. Also shows a table of customer spending for the last year and the last six months.
 Context of Use: Customer dashboard for viewing and managing purchases and spending. Button redirects to customerProfile.html to add a phone number.
 
-4. customer_page.html
+7. customer_page.html
+   
 Purpose: Provides login and registration forms for customers.
 Context of Use: Accessed by customers for logging in or registering for an account.
 
-5. customerProfile.html
+9. customerProfile.html
+    
 Purpose: Allows customers to add their phone number to their profile.
 Context of Use: Accessed from the client dashboard to update the customer's phone number information.
 
-6. customerSearch.html
+11. customerSearch.html
+    
 Purpose: Allows staff to search for a specific customer and view their history with the airline.
 Context of Use: Contains a table showing all customers of an airline, with a search form for retrieving a customer’s flight history.
 
-7. index.html
+13. index.html
+    
 Purpose: Displays flight search fields and a navigation bar that changes based on login status.
 Context of Use: Accessible to both logged-in and non-logged-in users, with options to search for flights and choose a user role for login or registration.
 
-8. passengerList.html
+15. passengerList.html
+    
 Purpose: Displays a table of all passengers on a particular flight.
 Context of Use: Accessed through staffdashboard.html by clicking the “Passenger Lists” button.
 
-9. staffdashboard.html
+17. staffdashboard.html
+    
 Purpose: Staff dashboard providing tools to manage flights, passengers, airplanes, airports, maintenance schedules, and revenues.
 Context of Use: Contains various forms and tables for flight and revenue management, including buttons that redirect to other pages (e.g., airlineFleet.html, passengerList.html, customerSearch.html, viewstats.html, and staffProfile.html).
 
-10. staff_page.html
+19. staff_page.html
+    
 Purpose: Provides login and registration forms for staff members.
 Context of Use: Accessed by staff for logging in or registering for an account.
 
-11. staffProfile.html
+21. staffProfile.html
+    
 Purpose: Allows staff members to add email addresses and phone numbers to their account.
 Context of Use: Accessed from the staff dashboard to update staff member contact information.
 
-12. viewstats.html
+23. viewstats.html
+    
 Purpose: Displays ratings and comments for flights, along with the average rating.
 Context of Use: Accessed through the “View” button on the staffdashboard.html page to see customer feedback on flights.
 
 ## Use Cases
-Use Case 1: Search for Flights (One-way and Round-trip)  
-ID: UC-001  
-Actor(s): Customer  
-Description: A customer can search for future flights based on source city/airport name, destination city/airport name, and departure or return dates (for round-trip).  
-Preconditions:  
+Use Case 1: Search for Flights (One-way and Round-trip)
+
+ID: UC-001
+
+Actor(s): Customer
+
+Description: A customer can search for future flights based on source city/airport name, destination city/airport name, and departure or return dates (for round-trip).
+
+Preconditions:
 The customer does not need to be logged in.  
-Postconditions:  
+Postconditions:
 Available flights are displayed based on the search criteria.
-Trigger:  
+Trigger:
 Customer initiates a search by providing flight details.  
 Basic Flow:
 - Customer enters the source city/airport, destination city/airport, and departure date (for one-way) or return date (for round-trip).
