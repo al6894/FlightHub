@@ -6,11 +6,11 @@ and revenue while giving customers the ability to search for flights, purchase t
 view their flight history.
 
 ## Core Features Include:
-1. Flight search and booking
-2. Customer and staff registration
-3. Dashboards for managing flight and customer information
-4. Customer and staff profile management
-5. Flight statistics and feedback views
+- Flight search and booking
+- Customer and staff registration
+- Dashboards for managing flight and customer information
+- Customer and staff profile management
+- Flight statistics and feedback views
 
 ## CSS Files
 1. index.css
