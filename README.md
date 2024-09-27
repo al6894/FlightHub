@@ -6,7 +6,8 @@ and revenue while giving customers the ability to search for flights, purchase t
 view their flight history.
 
 ## Schema
-![Schema of FlightHub](https://github.com/[andylee02]/[FlightHub]/blob/[main]/schema.png?raw=true)
+![Schema of FlightHub](https://raw.githubusercontent.com/andylee02/FlightHub/main/files/schema.png
+)
 
 ## Core Features Include:
 - Flight search and booking
