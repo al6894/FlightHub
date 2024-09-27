@@ -75,114 +75,105 @@ Purpose: Displays ratings and comments for flights, along with the average ratin
 Context of Use: Accessed through the “View” button on the staffdashboard.html page to see customer feedback on flights.
 
 ## Use Cases
-Use Case 1: Search for Flights (One-way and Round-trip)
-
-ID: UC-001
-
-Actor(s): Customer
-
-Description: A customer can search for future flights based on source city/airport name, destination city/airport name, and departure or return dates (for round-trip).
-
-Preconditions:
-The customer does not need to be logged in.
-
-Postconditions:
+Use Case 1: Search for Flights (One-way and Round-trip)  
+ID: UC-001  
+Actor(s): Customer  
+Description: A customer can search for future flights based on source city/airport name, destination city/airport name, and departure or return dates (for round-trip).  
+Preconditions:  
+The customer does not need to be logged in.  
+Postconditions:  
 Available flights are displayed based on the search criteria.
-
-Trigger:
-Customer initiates a search by providing flight details.
-
+Trigger:  
+Customer initiates a search by providing flight details.  
 Basic Flow:
 - Customer enters the source city/airport, destination city/airport, and departure date (for one-way) or return date (for round-trip).
 - The system converts the airport names to airport codes to process flight searches
-- The system displays the matching flight options to the customer.
-  
+- The system displays the matching flight options to the customer.  
 Alternative Flows:
-- Invalid Search Criteria: The system informs the customer that no flights match the search criteria.
-  
-Special Requirements: None
-Priority: High
+- Invalid Search Criteria: The system informs the customer that no flights match the search criteria.  
+Special Requirements: None  
+Priority: High  
 Frequency of Use: Frequent
 
-Use Case 2: User Registration (Customer and Staff)
-ID: UC-002
-Actor(s): Customer, Staff
-Description: A user (either customer or staff) can register for an account with the system.
-Preconditions:
-The user has not already registered.
-Postconditions:
-A new user account is created.
-Trigger:
-The user submits the registration form.
-Basic Flow:
-The user provides registration details (e.g., email, password, username, etc.).
-For customers, the system checks if the email already exists
-For staff, the system checks if the username already exists for the airline
-If the check is successful, the system creates a new account.
-Alternative Flows:
-Existing User: The system informs the user that the email or username already exists.
-Special Requirements: MD5 hashing is used for password storage via hash_password() using hashlib.md5().
-Priority: High
-Frequency of Use: Occasional
+Use Case 2: User Registration (Customer and Staff)  
+ID: UC-002  
+Actor(s): Customer, Staff  
+Description: A user (either customer or staff) can register for an account with the system.  
+Preconditions:  
+The user has not already registered.  
+Postconditions:  
+A new user account is created.  
+Trigger:  
+The user submits the registration form.  
+Basic Flow:  
+- The user provides registration details (e.g., email, password, username, etc.).
+- For customers, the system checks if the email already exists
+- For staff, the system checks if the username already exists for the airline
+- If the check is successful, the system creates a new account.  
+Alternative Flows:  
+- Existing User: The system informs the user that the email or username already exists.  
+Special Requirements: MD5 hashing is used for password storage via hash_password() using hashlib.md5().  
+Priority: High  
+Frequency of Use: Occasional  
 
-Use Case 3: User Login (Customer and Staff)
-ID: UC-003
-Actor(s): Customer, Staff
-Description: A registered user can log into the system.
-Preconditions:
-The user must be registered.
-Postconditions:
-The user is logged in, and session data is created.
-Trigger:
-The user submits login credentials.
+Use Case 3: User Login (Customer and Staff)  
+ID: UC-003  
+Actor(s): Customer, Staff  
+Description: A registered user can log into the system.  
+Preconditions:  
+The user must be registered.  
+Postconditions:  
+The user is logged in, and session data is created.  
+Trigger:  
+The user submits login credentials.  
 Basic Flow:
-The customer provides email and password.
-The system verifies the credentials with the database
-If successful, the customer is logged in.
-For staff, the system verifies airline, username, and password
-If successful, the staff member is logged in.
+- The customer provides email and password.
+- The system verifies the credentials with the database
+- If successful, the customer is logged in.
+- For staff, the system verifies airline, username, and password
+- If successful, the staff member is logged in.  
 Alternative Flows:
-Invalid Credentials: The system displays an error message.
-Special Requirements: None
-Priority: High
-Frequency of Use: Frequent
+- Invalid Credentials: The system displays an error message.  
+Special Requirements: None  
+Priority: High  
+Frequency of Use: Frequent  
 
-Use Case 4: View My Flights (Customer)
-ID: UC-004
-Actor(s): Customer
-Description: A customer can view their past, current, and future flights.
+Use Case 4: View My Flights (Customer)  
+ID: UC-004  
+Actor(s): Customer  
+Description: A customer can view their past, current, and future flights.  
 Preconditions:
-The customer must be logged in.
+The customer must be logged in.  
 Postconditions:
-The system displays the customer's flight history.
+The system displays the customer's flight history.  
 Trigger:
-The customer selects the option to view their flights.
+The customer selects the option to view their flights.  
 Basic Flow:
-The customer chooses to view future flights, past flights, or all flights.
-The system displays the relevant flights.
+- The customer chooses to view future flights, past flights, or all flights.
+- The system displays the relevant flights.  
 Alternative Flows:
-No Flights Found: The system informs the customer that no flights match the criteria.
-Special Requirements: None
-Priority: High
-Frequency of Use: Frequent
+- No Flights Found: The system informs the customer that no flights match the criteria.  
+Special Requirements: None  
+Priority: High  
+Frequency of Use: Frequent  
 
-Use Case 5: Purchase Tickets
-ID: UC-005
-Actor(s): Customer
-Description: A customer can purchase tickets for a flight.
+Use Case 5: Purchase Tickets  
+ID: UC-005  
+Actor(s): Customer  
+Description: A customer can purchase tickets for a flight.  
 Preconditions:
-The customer must be logged in.
+The customer must be logged in.  
 Postconditions:
-The ticket is purchased and recorded in the database.
+The ticket is purchased and recorded in the database.  
 Trigger:
-The customer selects a flight and proceeds to purchase a ticket.
+The customer selects a flight and proceeds to purchase a ticket.  
 Basic Flow:
-The customer selects a flight to purchase a ticket.
-The system checks if the ticket is available.
-If available, the system inserts the purchase into the purchases table
-The system confirms the purchase with the customer.
+- The customer selects a flight to purchase a ticket.
+- The system checks if the ticket is available.
+- If available, the system inserts the purchase into the purchases table
+- The system confirms the purchase with the customer.  
 Alternative Flows:
-Ticket Unavailable: The system informs the customer that the ticket has already been purchased.
-Special Requirements: None
-Priority: High
-Frequency of Use: Frequent
+- Ticket Unavailable: The system informs the customer that the ticket has already been purchased.  
+Special Requirements: None  
+Priority: High  
+Frequency of Use: Frequent  
