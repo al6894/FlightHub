@@ -5,6 +5,9 @@ both staff and customers. The platform offers tools for staff to manage flights,
 and revenue while giving customers the ability to search for flights, purchase tickets, and
 view their flight history.
 
+## Schema
+![alt text](https://github.com/[andylee02]/[FlightHub]/blob/[main]/schema.png?raw=true)
+
 ## Core Features Include:
 - Flight search and booking
 - Customer and staff registration
