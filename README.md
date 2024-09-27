@@ -88,14 +88,18 @@ The customer does not need to be logged in.
 
 Postconditions:
 Available flights are displayed based on the search criteria.
+
 Trigger:
 Customer initiates a search by providing flight details.
+
 Basic Flow:
-Customer enters the source city/airport, destination city/airport, and departure date (for one-way) or return date (for round-trip).
-The system converts the airport names to airport codes to process flight searches
-The system displays the matching flight options to the customer.
+- Customer enters the source city/airport, destination city/airport, and departure date (for one-way) or return date (for round-trip).
+- The system converts the airport names to airport codes to process flight searches
+- The system displays the matching flight options to the customer.
+  
 Alternative Flows:
-Invalid Search Criteria: The system informs the customer that no flights match the search criteria.
+- Invalid Search Criteria: The system informs the customer that no flights match the search criteria.
+  
 Special Requirements: None
 Priority: High
 Frequency of Use: Frequent
